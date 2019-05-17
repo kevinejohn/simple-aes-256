@@ -1,27 +1,23 @@
 const crypto = require('crypto-browserify')
+const Buffer = require('buffer').Buffer
 
 function encrypt (secret, text) {
   const hashedSecret = crypto
     .createHash('sha256')
     .update(secret)
-    .digest('buffer')
+    .digest()
   const iv = crypto.randomBytes(16)
   const cipher = crypto.createCipheriv('aes-256-ctr', hashedSecret, iv)
-  let crypted = iv.toString('binary')
-  crypted += cipher.update(text, 'binary', 'binary')
-  crypted += cipher.final('binary')
-  return Buffer.from(crypted, 'binary')
+  return Buffer.concat([iv, cipher.update(text), cipher.final()])
 }
 function decrypt (secret, crypted) {
   const hashedSecret = crypto
     .createHash('sha256')
     .update(secret)
-    .digest('buffer')
+    .digest()
   const iv = crypted.slice(0, 16)
   const decipher = crypto.createCipheriv('aes-256-ctr', hashedSecret, iv)
-  let text = decipher.update(crypted.slice(16), 'binary', 'binary')
-  text += decipher.final('binary')
-  return text
+  return Buffer.concat([decipher.update(crypted.slice(16)), decipher.final()])
 }
 
 module.exports = {
