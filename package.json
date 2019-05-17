@@ -1,0 +1,25 @@
+{
+  "name": "simple-aes-256",
+  "version": "1.0.0",
+  "description": "Simple aes-256-ctr encrypt/decrypt",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "aes",
+    "256",
+    "encrypt",
+    "decrypt",
+    "ctr"
+  ],
+  "author": "Kevin Johnson (KevinEJohn)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kevinejohn/simple-aes-256.git"
+  },
+  "dependencies": {
+    "crypto-browserify": "3.12.0"
+  }
+}
