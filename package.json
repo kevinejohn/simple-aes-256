@@ -18,8 +18,5 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/kevinejohn/simple-aes-256.git"
-  },
-  "dependencies": {
-    "crypto-browserify": "3.12.0"
   }
 }
