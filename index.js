@@ -1,18 +1,17 @@
 const crypto = require('crypto')
 
-function encrypt (secret, text) {
-  const hashedSecret = crypto
+function sha256 (secret) {
+  return crypto
     .createHash('sha256')
     .update(secret)
     .digest()
-  return encryptRaw(hashedSecret, text)
+}
+
+function encrypt (secret, text) {
+  return encryptRaw(sha256(secret), text)
 }
 function decrypt (secret, crypted) {
-  const hashedSecret = crypto
-    .createHash('sha256')
-    .update(secret)
-    .digest()
-  return decryptRaw(hashedSecret, crypted)
+  return decryptRaw(sha256(secret), crypted)
 }
 
 function encryptRaw (hashedSecret, text) {
@@ -27,6 +26,7 @@ function decryptRaw (hashedSecret, crypted) {
 }
 
 module.exports = {
+  sha256,
   encrypt,
   decrypt,
   encryptRaw,
