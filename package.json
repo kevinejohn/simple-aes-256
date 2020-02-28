@@ -1,6 +1,6 @@
 {
   "name": "simple-aes-256",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Simple aes-256-ctr encrypt/decrypt",
   "main": "index.js",
   "scripts": {
