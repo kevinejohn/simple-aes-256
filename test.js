@@ -17,7 +17,6 @@ assert.equal(Buffer.compare(decrypted, message), 0)
 
 const crypto = require('crypto')
 const hashedSecret = crypto.randomBytes(32)
-
 encrypted = SimpleAes.encryptRaw(hashedSecret, message)
 decrypted = SimpleAes.decryptRaw(hashedSecret, encrypted)
 assert.equal(Buffer.compare(decrypted, message), 0)
