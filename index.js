@@ -1,7 +1,7 @@
 const aes = require('browserify-aes')
 
 function randomBytes (size) {
-  if (typeof window === 'undefined') {
+  if (typeof document === 'undefined') {
     return require('crypto').randomBytes(size)
   } else {
     let crypto
@@ -19,7 +19,7 @@ function randomBytes (size) {
 }
 
 function sha256 (input) {
-  if (typeof window === 'undefined') {
+  if (typeof document === 'undefined') {
     return require('crypto')
       .createHash('sha256')
       .update(input)
